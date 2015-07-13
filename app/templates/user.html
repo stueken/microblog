@@ -8,7 +8,9 @@
           <td>
               <h1>User: {{user.nickname}}</h1>
               {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
-              {% if user.last_seen %}<p><i>Last seen on: {{ user.last_seen }}</i></p>{% endif %}
+              {% if user.last_seen %}
+				<p><em>Last seen: {{ momentjs(user.last_seen).calendar() }}</em></p>
+			  {% endif %}
               <p>{{ user.followers.count() }} followers | 
               {% if user.id == g.user.id %}
                   <a href="{{ url_for('edit') }}">Edit your profile</a>

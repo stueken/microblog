@@ -7,9 +7,11 @@ from flask.ext.mail import Mail
 from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD, WHOOSH_BASE
 from whoosh.filedb.filestore import FileStorage
 from whoosh.fields import Schema, TEXT, ID
+from .momentjs import momentjs
 
 app = Flask(__name__)
 app.config.from_object('config')
+app.jinja_env.globals['momentjs'] = momentjs
 db = SQLAlchemy(app)
 lm = LoginManager()
 lm.init_app(app)
