@@ -6,14 +6,17 @@
 		<title>Welcome to microblog</title>
 		{% endif %}
 		<script src="/static/js/moment.min.js"></script>
+		{% if g.locale != 'en' %}
+			<script src="/static/js/moment-with-locales.min.js">moment.locale('de');</script>
+		{% endif %}
 	</head>
 	<body>
-		<div>Microblog: <a href="/index">Home</a></div>
+		<div><a href="{{ url_for('index') }}">{{ _('Home') }}</a>
 		{% if g.user.is_authenticated() %}
-		| <a href="{{ url_for('user', nickname=g.user.nickname) }}">Your Profile</a>
-	    | <form style="display: inline;" action="{{ url_for('search') }}" method="post" name="search">{{ g.search_form.hidden_tag() }}{{ g.search_form.search(size=20) }}<input type="submit" value="Search"></form>
-        | <a href="{{ url_for('logout') }}">Logout</a>
-        {% endif %}
+		| <a href="{{ url_for('user', nickname=g.user.nickname) }}">{{ _('Your Profile') }}</a>
+	    | <form style="display: inline;" action="{{ url_for('search') }}" method="post" name="search">{{ g.search_form.hidden_tag() }}{{ g.search_form.search(size=20) }}<input type="submit" value="{{ _('Search') }}"></form>
+        | <a href="{{ url_for('logout') }}">{{ _('Logout') }}</a>
+        {% endif %}</div>
 		<hr>
 		{% with messages = get_flashed_messages() %}
 			{% if messages %}
