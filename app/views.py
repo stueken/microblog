@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import render_template, flash, redirect, session, url_for, request, g
+from flask import render_template, flash, redirect, session, url_for, request, g, jsonify
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from flask.ext.babel import gettext
 from app import app, db, lm, oid, search_ix, babel
@@ -8,6 +8,8 @@ from .models import User, Post
 from .emails import follower_notification
 from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES
 from whoosh.qparser import QueryParser
+from guess_language import guessLanguage
+from .translate import microsoft_translate
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -17,7 +19,13 @@ from whoosh.qparser import QueryParser
 def index(page=1):
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(body=form.post.data, timestamp=datetime.utcnow(), author=g.user)
+        language = guessLanguage(form.post.data)
+        if language == 'UNKNOWN' or len(language) > 5:
+            language = ''
+        post = Post(body=form.post.data, 
+                    timestamp=datetime.utcnow(), 
+                    author=g.user, 
+                    language=language)
         db.session.add(post)
         db.session.commit()
         flash(gettext('Your post is now live!'))
@@ -197,3 +205,12 @@ def search_results(query):
 def get_locale():
     # return 'en'
     return request.accept_languages.best_match(LANGUAGES.keys())
+
+@app.route('/translate', methods=['POST'])
+@login_required
+def translate():
+    return jsonify({ 
+        'text': microsoft_translate(
+            request.form['text'], 
+            request.form['sourceLang'], 
+            request.form['destLang']) })

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-07-14 15:07+0200\n"
+"POT-Creation-Date: 2015-07-14 16:37+0200\n"
 "PO-Revision-Date: 2015-07-13 19:01+0100\n"
 "Last-Translator: Norbert <norbert.stueken@gmail.com>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -33,33 +33,41 @@ msgstr ""
 msgid "This nickname is already in use. Please choose another one."
 msgstr ""
 
-#: app/views.py:23
+#: app/translate.py:15
+msgid "Error: translation service not configured."
+msgstr ""
+
+#: app/translate.py:38
+msgid "Error: Unexpected error."
+msgstr ""
+
+#: app/views.py:30
 msgid "Your post is now live!"
 msgstr ""
 
-#: app/views.py:27
+#: app/views.py:34
 msgid "Your post is now indexed!"
 msgstr ""
 
-#: app/views.py:61
+#: app/views.py:68
 msgid "Invalid login. Please try again."
 msgstr "Ingreso invalido. Por favor, vuelva a intentarlo."
 
-#: app/views.py:100
+#: app/views.py:107
 #, python-format
 msgid "User %(name)s not found."
 msgstr ""
 
-#: app/views.py:116
+#: app/views.py:123
 msgid "Your changes have been saved."
 msgstr ""
 
-#: app/views.py:149
+#: app/views.py:156
 #, python-format
 msgid "You are now following %(name)s!"
 msgstr ""
 
-#: app/views.py:170
+#: app/views.py:177
 #, python-format
 msgid "You have stopped following %(name)s."
 msgstr ""
@@ -120,10 +128,14 @@ msgstr ""
 msgid "Remember Me"
 msgstr ""
 
-#: app/templates/post.html:8
+#: app/templates/post.html:7
 #, python-format
 msgid "%(nickname)s said %(when)s:"
 msgstr "%(nickname)s dijo %(when)s:"
+
+#: app/templates/post.html:11
+msgid "Translate"
+msgstr ""
 
 #: app/templates/user.html:9
 msgid "User:"

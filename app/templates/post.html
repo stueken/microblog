@@ -5,8 +5,14 @@
         <!--<i><a href="{{ url_for('user', nickname=post.author.nickname)}}">{{ post.author.nickname }}</a> said {{ momentjs(post.timestamp).fromNow() }}:</i>-->
         {% autoescape false %}
 			{{ _('%(nickname)s said %(when)s:', nickname = '<a href="%s">%s</a>' % (url_for('user', nickname=post.author.nickname), post.author.nickname), when=momentjs(post.timestamp).fromNow()) }}
-		{% endautoescape %}<br>
-		<strong>{{ post.body }}</strong>
+		{% endautoescape %}
+		<p><strong><span id="post{{ post.id }}">{{ post.body }}</span></strong></p>
+		{% if post.language != None and post.language != '' and post.language != g.locale %}
+		<div><span id="translation{{post.id}}">
+			<a href="javascript:translate('{{ post.language }}', '{{ g.locale }}', '#post{{ post.id }}', '#translation{{ post.id }}', '#loading{{ post.id }}');">{{ _('Translate') }}</a>
+		</span></div>
+		<img id="loading{{post.id}}" style="display: none" src="/static/img/loading.gif">
+		{% endif %}
         </td>
     </tr>
 </table>

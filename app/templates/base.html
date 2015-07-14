@@ -9,6 +9,26 @@
 		{% if g.locale != 'en' %}
 			<script src="/static/js/moment-with-locales.min.js">moment.locale('de');</script>
 		{% endif %}
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script>
+		function translate(sourceLang, destLang, sourceId, destId, loadingId) {
+		    $(destId).hide();
+		    $(loadingId).show();
+		    $.post('/translate', {
+		        text: $(sourceId).text(),
+		        sourceLang: sourceLang,
+		        destLang: destLang
+		    }).done(function(translated) {
+		        $(destId).text(translated['text'])
+		        $(loadingId).hide();
+		        $(destId).show();
+		    }).fail(function() {
+		        $(destId).text("{{ _('Error: Could not contact server.') }}");
+		        $(loadingId).hide();
+		        $(destId).show();
+		    });
+		}
+		</script>
 	</head>
 	<body>
 		<div><a href="{{ url_for('index') }}">{{ _('Home') }}</a>

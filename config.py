@@ -42,5 +42,10 @@ MAX_SEARCH_RESULTS = 50
 # available languages
 LANGUAGES = {
     'en': 'English',
+    'de': 'German',
     'es': 'Español'
 }
+
+# microsoft translation service
+MS_TRANSLATOR_CLIENT_ID = 'microblog-client-id' # enter your MS translator app id here
+MS_TRANSLATOR_CLIENT_SECRET = 'Knlbz6SVDATHGRrpIbMMZ+Kdw3VrcLV4SVAfOV9EDP4=' # enter your MS translator app secret here
