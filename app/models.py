@@ -75,7 +75,7 @@ class User(db.Model):
     def make_valid_nickname(nickname):
         return re.sub('[^a-zA-Z0-9_\.]', '', nickname)
 
-    def __repr__(self):
+    def __repr__(self): # pragma: no cover
         return '<User %r>' % (self.nickname)
 
 

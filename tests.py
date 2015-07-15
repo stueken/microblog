@@ -6,6 +6,9 @@ from config import basedir
 from app import app, db
 from app.models import User, Post
 from app.translate import microsoft_translate
+from coverage import coverage
+cov = coverage(branch=True, omit=['flask/*', 'tests.py'])
+cov.start()
 
 
 class TestCase(unittest.TestCase):
@@ -30,6 +33,8 @@ class TestCase(unittest.TestCase):
         u = User(nickname='john', email='john@example.com')
         db.session.add(u)
         db.session.commit()
+        nickname = User.make_unique_nickname('susan')
+        assert nickname == 'susan'
         nickname = User.make_unique_nickname('john')
         assert nickname != 'john'
         u = User(nickname=nickname, email='susan@example.com')
@@ -115,6 +120,46 @@ class TestCase(unittest.TestCase):
     def test_translation(self):
             assert microsoft_translate(u'English', 'en', 'es') == u'Inglés'
             assert microsoft_translate(u'Español', 'es', 'en') == u'Spanish'
-        
+
+    def test_delete_post(self):
+        # create a user and a post
+        u = User(nickname='john', email='john@example.com')
+        p = Post(body='test post', author=u, timestamp=datetime.utcnow())
+        db.session.add(u)
+        db.session.add(p)
+        db.session.commit()
+        # query the post and destroy the session
+        p = Post.query.get(1)
+        db.session.remove()
+        # delete the post using a new session
+        db.session = db.create_scoped_session()
+        db.session.delete(p)
+        db.session.commit()
+
+    def test_user(self):
+        # make valid nicknames
+        n = User.make_valid_nickname('John_123')
+        assert n == 'John_123'
+        n = User.make_valid_nickname('John_[123]\n')
+        assert n == 'John_123'
+        # create a user
+        u = User(nickname='john', email='john@example.com')
+        db.session.add(u)
+        db.session.commit()
+        assert u.is_authenticated() is True
+        assert u.is_active() is True
+        assert u.is_anonymous() is False
+        assert u.id == int(u.get_id())
+
 if __name__ == '__main__':
-    unittest.main()
+    try:
+        unittest.main()
+    except:
+        pass
+    cov.stop()
+    cov.save()
+    print ("\n\nCoverage Report:\n")
+    cov.report()
+    print ("HTML version: " + os.path.join(basedir, "tmp/coverage/index.html"))
+    cov.html_report(directory='tmp/coverage')
+    cov.erase()
