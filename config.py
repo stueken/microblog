@@ -47,8 +47,7 @@ MAX_SEARCH_RESULTS = 50
 # available languages
 LANGUAGES = {
     'en': 'English',
-    'de': 'German',
-    'es': 'Español'
+    'de': 'German'
 }
 
 # microsoft translation service
