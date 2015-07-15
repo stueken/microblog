@@ -6,7 +6,7 @@ from flask.ext.login import LoginManager
 from flask.ext.openid import OpenID
 from flask.ext.mail import Mail
 from flask.ext.babel import Babel, lazy_gettext
-from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD, WHOOSH_BASE
+from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD, WHOOSH_BASE, WHOOSH_ENABLED
 from whoosh.filedb.filestore import FileStorage
 from whoosh.fields import Schema, TEXT, ID
 from .momentjs import momentjs
@@ -33,7 +33,7 @@ if not app.debug:
     mail_handler.setLevel(logging.ERROR)
     app.logger.addHandler(mail_handler)
 
-if not app.debug:
+if not app.debug and os.environ.get('HEROKU') is None:
     import logging
     from logging.handlers import RotatingFileHandler
     file_handler = RotatingFileHandler('tmp/microblog.log', 'a', 1 * 1024 * 1024, 10)
@@ -43,17 +43,26 @@ if not app.debug:
     app.logger.addHandler(file_handler)
     app.logger.info('microblog startup')
 
-search_is_new = False
-if not os.path.exists(WHOOSH_BASE):
-    os.mkdir(WHOOSH_BASE)
-    search_is_new = True
-search_storage = FileStorage(WHOOSH_BASE)
-search_ix = None
-if search_is_new:
-    schema = Schema(id=ID(stored=True), body=TEXT())
-    search_ix = search_storage.create_index(schema)
-else:
-    search_ix = search_storage.open_index()
+if os.environ.get('HEROKU') is not None:
+    import logging
+    stream_handler = logging.StreamHandler()
+    app.logger.addHandler(stream_handler)
+    app.logger.setLevel(logging.INFO)
+    app.logger.info('microblog startup')
+
+enable_search = WHOOSH_ENABLED
+if enable_search:
+	search_is_new = False
+	if not os.path.exists(WHOOSH_BASE):
+	    os.mkdir(WHOOSH_BASE)
+	    search_is_new = True
+	search_storage = FileStorage(WHOOSH_BASE)
+	search_ix = None
+	if search_is_new:
+	    schema = Schema(id=ID(stored=True), body=TEXT())
+	    search_ix = search_storage.create_index(schema)
+	else:
+	    search_ix = search_storage.open_index()
 
 class CustomJSONEncoder(JSONEncoder):
     """This class adds support for lazy translation texts to Flask's

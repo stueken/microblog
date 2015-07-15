@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-07-14 16:37+0200\n"
+"POT-Creation-Date: 2015-07-15 18:23+0200\n"
 "PO-Revision-Date: 2015-07-13 19:01+0100\n"
 "Last-Translator: Norbert <norbert.stueken@gmail.com>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -37,54 +37,54 @@ msgstr ""
 msgid "Error: translation service not configured."
 msgstr ""
 
-#: app/translate.py:38
+#: app/translate.py:40
 msgid "Error: Unexpected error."
 msgstr ""
 
-#: app/views.py:30
+#: app/views.py:32
 msgid "Your post is now live!"
 msgstr ""
 
-#: app/views.py:34
+#: app/views.py:36
 msgid "Your post is now indexed!"
 msgstr ""
 
-#: app/views.py:68
+#: app/views.py:70
 msgid "Invalid login. Please try again."
 msgstr "Ingreso invalido. Por favor, vuelva a intentarlo."
 
-#: app/views.py:107
+#: app/views.py:109
 #, python-format
 msgid "User %(name)s not found."
 msgstr ""
 
-#: app/views.py:123
+#: app/views.py:125
 msgid "Your changes have been saved."
 msgstr ""
 
-#: app/views.py:156
+#: app/views.py:158
 #, python-format
 msgid "You are now following %(name)s!"
 msgstr ""
 
-#: app/views.py:177
+#: app/views.py:179
 #, python-format
 msgid "You have stopped following %(name)s."
 msgstr ""
 
-#: app/templates/base.html:14
+#: app/templates/base.html:31
+msgid "Error: Could not contact server."
+msgstr ""
+
+#: app/templates/base.html:49
 msgid "Home"
 msgstr ""
 
-#: app/templates/base.html:16
+#: app/templates/base.html:51
 msgid "Your Profile"
 msgstr ""
 
-#: app/templates/base.html:17
-msgid "Search"
-msgstr ""
-
-#: app/templates/base.html:18
+#: app/templates/base.html:52
 msgid "Logout"
 msgstr ""
 
@@ -92,39 +92,49 @@ msgstr ""
 msgid "Edit Your Profile"
 msgstr ""
 
-#: app/templates/edit.html:10
+#: app/templates/edit.html:11
 msgid "Your nickname:"
 msgstr ""
 
-#: app/templates/edit.html:17
+#: app/templates/edit.html:20
 msgid "About yourself:"
 msgstr ""
 
-#: app/templates/edit.html:22
+#: app/templates/edit.html:30
 msgid "Save Changes"
 msgstr ""
 
-#: app/templates/index.html:8
+#: app/templates/index.html:9
 msgid "Say something:"
 msgstr ""
 
-#: app/templates/index.html:18
+#: app/templates/index.html:19
 msgid "Post!"
 msgstr ""
 
-#: app/templates/index.html:27 app/templates/user.html:31
+#: app/templates/index.html:30 app/templates/index.html:32
+#: app/templates/user.html:28 app/templates/user.html:30
 msgid "Newer posts"
 msgstr ""
 
-#: app/templates/index.html:28 app/templates/user.html:32
+#: app/templates/index.html:35 app/templates/index.html:37
+#: app/templates/user.html:33 app/templates/user.html:35
 msgid "Older posts"
 msgstr ""
 
-#: app/templates/login.html:21
-msgid "Please enter your OpenID, or select one of the providers below:"
+#: app/templates/login.html:19
+msgid "Please Sign In"
 msgstr ""
 
-#: app/templates/login.html:30
+#: app/templates/login.html:22
+msgid "Click on your OpenID provider below:"
+msgstr ""
+
+#: app/templates/login.html:29
+msgid "Or enter your OpenID here:"
+msgstr ""
+
+#: app/templates/login.html:40
 msgid "Remember Me"
 msgstr ""
 
@@ -133,34 +143,36 @@ msgstr ""
 msgid "%(nickname)s said %(when)s:"
 msgstr "%(nickname)s dijo %(when)s:"
 
-#: app/templates/post.html:11
+#: app/templates/post.html:13
 msgid "Translate"
 msgstr ""
 
-#: app/templates/user.html:9
-msgid "User:"
+#: app/templates/post.html:18
+msgid "Delete"
 msgstr ""
 
 #: app/templates/user.html:12
-msgid "Last seen:"
+msgid "Last seen on:"
 msgstr ""
 
-#: app/templates/user.html:14
+#: app/templates/user.html:13
 #, fuzzy, python-format
-msgid "%(num)s follower"
-msgid_plural "%(num)s followers"
-msgstr[0] ""
-msgstr[1] ""
+msgid "Followers:"
+msgstr ""
 
-#: app/templates/user.html:16
+#: app/templates/user.html:13
+msgid "Following:"
+msgstr ""
+
+#: app/templates/user.html:15
 msgid "Edit your profile"
 msgstr ""
 
-#: app/templates/user.html:18
+#: app/templates/user.html:17
 msgid "Follow"
 msgstr ""
 
-#: app/templates/user.html:20
+#: app/templates/user.html:19
 msgid "Unfollow"
 msgstr ""
 
@@ -180,5 +192,17 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "followers"
+#~ msgstr ""
+
+#~ msgid "Search"
+#~ msgstr ""
+
+#~ msgid "Please enter your OpenID, or select one of the providers below:"
+#~ msgstr ""
+
+#~ msgid "User:"
+#~ msgstr ""
+
+#~ msgid "Last seen:"
 #~ msgstr ""
 
