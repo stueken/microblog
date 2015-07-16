@@ -6,9 +6,11 @@
 		{% else %}
 		<title>Welcome to microblog</title>
 		{% endif %}
-		<script src="/static/js/moment.min.js"></script>
-		{% if g.locale != 'en' %}
-			<script src="/static/js/moment-with-locales.min.js">moment.locale('de');</script>
+		<script src="/static/js/moment-with-locales.min.js"></script>
+		{% if g.locale == 'de' %}
+			<script>moment.locale('de');</script>
+		{% else %}
+			<script>moment.locale('en');</script>
 		{% endif %}
 		<link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
 	    <link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
