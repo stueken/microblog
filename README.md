@@ -4,6 +4,12 @@ A small social microblogging platform created on basis of the [Flask Mega-Tutori
 
 You are welcome to try it out at http://socialmicroblog.herokuapp.com/ and follow [my profile](http://socialmicroblog.herokuapp.com/user/Norbert)!
 
+##Screenshots
+![Home](http://img5.fotos-hochladen.net/uploads/homesmtfedwmrsuh.jpg)
+![Profile](http://img5.fotos-hochladen.net/uploads/profilesmz0xn56qe43.jpg)
+![Login](http://img5.fotos-hochladen.net/uploads/signinsmmq7k6lwsnb.jpg)
+
+
 ##Features
 - Profile Pages with Avatars
 - Follow and Unfollow Users
