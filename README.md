@@ -27,7 +27,17 @@ tbd
 - The full text search functionality is disabled on the demo url as the heroku server doesn't support mysqlite (file based) databases. Making the full text search work on a Postgresql database would require several changes to the application. It is planned to deploy a fully working demo to a Linux VPS.
 
 ##Executables
-tbd
+Run with `$ ./EXECUTABLE.py` from root directory. If permission is denied, give it executable permission with `$ chmod a+x EXECUTABLE.py`.
+- run.py: Start up the development web server with the application.
+- runp.py: Start up the development web server with the application, but with debugging disabled (production mode).
+- tests.py: Run all unittests.
+- db_create.py: Create the database.
+- db_migrate.py: Generate a database migration after changes to the database structure occured.
+- db_upgrade.py: Upgrade the database to the latest revision.
+- db_downgrade.py: Downgrade the database one revision. This can be done multiple times to downgrade several revisions.
+- tr_init.py: Add a language to the translation catalog.
+- tr_compile.py: Update the catalog with new texts from source and templates.
+- tr_update.py: Compile the catalog (messages.mo file)
 
 ##Deployment
 tbd
