@@ -3,7 +3,7 @@ from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from flask.ext.babel import gettext
 from flask.ext.sqlalchemy import get_debug_queries
-from app import app, db, lm, oid, search_ix, babel
+from app import app, db, lm, oid, babel, enable_search
 from .forms import LoginForm, EditForm, PostForm, SearchForm
 from .models import User, Post
 from .emails import follower_notification
@@ -11,6 +11,8 @@ from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES, DATABASE_QUERY
 from whoosh.qparser import QueryParser
 from guess_language import guessLanguage
 from .translate import microsoft_translate
+if enable_search:
+    from app import search_ix
 
 
 @app.route('/', methods=['GET', 'POST'])
