@@ -32,10 +32,11 @@ def index(page=1):
         db.session.add(post)
         db.session.commit()
         flash(gettext('Your post is now live!'))
-        writer = search_ix.writer()
-        writer.add_document(id=str(post.id), body=post.body)
-        writer.commit()
-        flash(gettext('Your post is now indexed!'))
+        if enable_search:
+            writer = search_ix.writer()
+            writer.add_document(id=str(post.id), body=post.body)
+            writer.commit()
+            flash(gettext('Your post is now indexed!'))
         return redirect(url_for('index'))
     posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False)
     return render_template('index.html',
