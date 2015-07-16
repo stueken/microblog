@@ -11,7 +11,7 @@ Flask-OpenID==1.2.4
 Flask-SQLAlchemy==2.0
 Flask-WTF==0.11
 flipflop==1.0
-guess-language-spirit==0.52
+guess-language-spirit==0.5.2
 gunicorn==19.3.0
 itsdangerous==0.24
 Jinja2==2.7.3
