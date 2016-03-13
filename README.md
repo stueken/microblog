@@ -15,22 +15,19 @@ follow [my profile](http://socialmicroblog.herokuapp.com/user/Norbert)!
 
 ## Features
 
-*   [OpenID](http://openid.net/)-login (please see *Known Issues* below)
+Next to basic features for a microblog like [OpenID](http://openid.net/)-login
+(please see *Known Issues* below), create and delete posts, pagination, profile
+pages with [(Gr)avatars](https://en.gravatar.com/), follow and unfollow users
+as well as email follower notifications, the following features are not always
+included:
 
-*   Create and delete posts
+*   Internationalization (i18n) and localization (l10n) through:
 
-*   Pagination
+    *   Multi-language support depending on the browser properties with the
+    [Babel package](https://pythonhosted.org/Flask-Babel/)
 
-*   Profile pages with [(Gr)avatars](https://en.gravatar.com/)
-
-*   Follow and unfollow users
-
-*   E-mail notifications for new followers
-
-*   Dual language (English/German) support depending on the browser properties
-
-*   Instant translations of blog posts in other languages by using Ajax calls
-with the [Microsoft Translator service](https://datamarket.azure.com/dataset/1899a118-d202-492c-aa16-ba21c33c06cb)
+    *   Instant translations of blog posts in other languages by using Ajax
+    calls with the [Microsoft Translator service](https://datamarket.azure.com/dataset/1899a118-d202-492c-aa16-ba21c33c06cb)
 
 *   Full text search (please see *Known Issues* below)
 
@@ -89,11 +86,46 @@ application folder: `cd microblog`
         *   In order to function with GMail, you need to login into your
         account and activate ["Access for less secure apps"](https://www.google.com/settings/u/1/security/lesssecureapps).
 
+    2.  **Adding language(s)**
+
+        *   Add the language to the list of available languages, e.g. Spanish:
+
+            ```python
+            # available languages
+            LANGUAGES = {
+            'en': 'English',
+            'de': 'Deutsch',
+            'es': 'Español'
+            }
+            ```
+
+        *   Add a language to the translation catalog, e.g. Español
+        (language-code = es): `./tr_init.py es`
+
+        *   If not done already, install [Poedit Translations Editor](http://poedit.net/):
+        `sudo apt-get install poedit`
+
+        *   Run `poedit`, fill in the target language in *catalog >
+        properties*, install the respective spellchecker directory if asked for,
+        open the `messages.po`-file from the language folder, e.g.
+        `app/transaltions/es`, add all translations and save the file.
+
+        *   Compile the `messages.po` file: `./tr_compile.py`
+
+        *   To check translation,modify the language settings in your browser
+        so that like in this example Spanish is the preferred language.
+
+        *   Translating moment.js
+        *   Lazy evaluation
+        
+
+
+
 
 7.  Create the database: `./db_create.py`
 
 8.  Start up the web server with the application in production mode:`./runp.py`
-and open <http://127.0.0.1:5000> in your browser
+and open <http://127.0.0.1:5000> in your browser. Enjoy!
 
 ## Executables
 
@@ -143,9 +175,8 @@ and templates.
 Python 3.4. This can easily be solved by changing a line in the babel
 package (see <https://github.com/mitsuhiko/flask-babel/issues/43>)
 
-*   The OpenID-service is not supported anymore by several of the
-listed providers (Google, MyOpenID, flickr). However, the login with
-Yahoo or AOL should still work.
+*   The login over OpenID is limited to a Yahoo or AOL account as several
+providers (like Google) dropped their support for the OpenID-service.
 
 *   The full text search functionality is disabled on the demo url as
 the heroku server doesn't support mysqlite (file based) databases.
@@ -156,6 +187,7 @@ fully working demo to a Linux VPS.
 ## Planned
 
 *   Deployment on Linux VPS
+*   Update user authentication to OAuth 2.0
 
 ## License
 
