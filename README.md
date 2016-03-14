@@ -54,12 +54,11 @@ application folder: `cd microblog`
     psycopg2-package in your virtual environment, run `sudo apt-get
     install libpq-dev python-dev` as explained in [this post](https://web.archive.org/web/20110305033324/http://goshawknest.wordpress.com/2011/02/16/how-to-install-psycopg2-under-virtualenv/).
 
-6.  Open the file `config.py` and fill in/replace the following information:
+6.  Configure email server and address(es) of the admin(s)
 
-    1.  **Email server and address(es) of the admins**
-
-        For example, if you want the application to send emails via your
-        GMail account you would enter the following:
+    1.  Open the file `config.py` and fill email and admin information. For
+        example, if you want the application to send emails via your GMail
+        account you would enter the following:
 
         ```python
         # email server
@@ -74,21 +73,20 @@ application folder: `cd microblog`
         ADMINS = ['your-gmail-username@gmail.com']
         ```
 
-        **Note**:
+    2.  `MAIL_USERNAME` and `MAIL_PASSWORD` are read from environment
+    variables. Set them with `export
+    MAIL_USERNAME=your-gmail-username@yourdomain.com` and `export
+    MAIL_PASSWORD=your-mail-password`. If you want to store your login
+    credentials persistently, then place the mentioned commands in the
+    `~/.profile`-file.
 
-        *   `MAIL_USERNAME` and `MAIL_PASSWORD` are read from environment
-        variables. Set them with `export
-        MAIL_USERNAME=your-gmail-username@yourdomain.com` and `export
-        MAIL_PASSWORD=your-mail-password`. If you want to store your login
-        credentials persistently, then place the mentioned commands in the
-        `~/.profile`-file.
+    **Note**:
+    In order to function with GMail, you need to login into your account
+    and activate ["Access for less secure apps"](https://www.google.com/settings/u/1/security/lesssecureapps).
 
-        *   In order to function with GMail, you need to login into your
-        account and activate ["Access for less secure apps"](https://www.google.com/settings/u/1/security/lesssecureapps).
+7.  Optional: Add additional language(s) (English and German already supported)
 
-    2.  **Adding language(s)**
-
-        *   Add the language to the list of available languages, e.g. Spanish:
+    1.  Add the language to the list of available languages, e.g. Spanish:
 
         ```python
         # available languages
@@ -99,20 +97,19 @@ application folder: `cd microblog`
         }
         ```
 
-        *   Add a language to the translation catalog, e.g. Español
-        (language-code = es): `./tr_init.py es`
+    2.  Add a language to the translation catalog, e.g. Español
+    (language-code = es): `./tr_init.py es`
 
-        *   If not done already, install [Poedit Translations Editor](http://poedit.net/):
-        `sudo apt-get install poedit`
+    3.  If not done already, install [Poedit Translations Editor](http://poedit.net/): `sudo apt-get install poedit`
 
-        *   Run `poedit`, fill in the target language in *catalog >
-        properties*, install the respective spellchecker directory if asked for,
-        open the `messages.po`-file from the language folder, e.g.
-        `app/transaltions/es`, add all translations and save the file.
+    4.  Run `poedit`, fill in the target language in *catalog > properties*,
+    install the respective spellchecker directory if asked for, open the
+    `messages.po`-file from the language folder, e.g. `app/transaltions/es`,
+    add all translations and save the file.
 
-        *   Compile the `messages.po` file: `./tr_compile.py`
+    5.  Compile the `messages.po` file: `./tr_compile.py`
 
-        *   To show timestamps in the target language as well, open
+    6.  Show timestamps in the target language as well. Open
         `app/templates/base.html` and add an 'elif'-statement to the header
         like shown here for Spanish (es):
 
@@ -129,14 +126,12 @@ application folder: `cd microblog`
         ...
         ```
 
-        *   To check translation, modify the language settings in your browser
-        so that like in this example Spanish is the preferred language.
+    7.  To check translation, modify the language settings in your browser so
+    that like in this example Spanish is the preferred language.
 
-        *   Lazy evaluation
+8.  Create the database: `./db_create.py`
 
-7.  Create the database: `./db_create.py`
-
-8.  Start up the web server with the application in production mode:`./runp.py`
+9.  Start up the web server with the application in production mode:`./runp.py`
 and open <http://127.0.0.1:5000> in your browser. Enjoy!
 
 ## Commands
@@ -147,8 +142,8 @@ available:
 
 | Command           | Description                                             |
 | ----------------- | ------------------------------------------------------- |
-| `run.py`          | Start up the development web server with the application.                                        |
-| `runp.py`         | Like above, but with debugging disabled (production  mode). |   
+| `run.py`          | Start up the development web server with the application. |
+| `runp.py`         | Like above, but with debugging disabled (production mode). |
 | `tests.py`        | Run all unittests.                                      |
 | `db_create.py`    | Create the database.                                    |
 | `db_migrate.py`   | Generate a database migration after changes to the database structure occured. |
