@@ -90,14 +90,14 @@ application folder: `cd microblog`
 
         *   Add the language to the list of available languages, e.g. Spanish:
 
-            ```python
-            # available languages
-            LANGUAGES = {
+        ```python
+        # available languages
+        LANGUAGES = {
             'en': 'English',
             'de': 'Deutsch',
             'es': 'Español'
-            }
-            ```
+        }
+        ```
 
         *   Add a language to the translation catalog, e.g. Español
         (language-code = es): `./tr_init.py es`
@@ -112,58 +112,51 @@ application folder: `cd microblog`
 
         *   Compile the `messages.po` file: `./tr_compile.py`
 
-        *   To check translation,modify the language settings in your browser
+        *   To show timestamps in the target language as well, open
+        `app/templates/base.html` and add an 'elif'-statement to the header
+        like shown here for Spanish (es):
+
+        ```htmldjango
+        ...
+        <script src="/static/js/moment-with-locales.min.js"></script>
+        {% if g.locale == 'de' %}
+            <script>moment.locale('de');</script>
+        {% elif g.locale == 'es' %}
+            <script>moment.locale('es');</script>
+        {% else %}
+            <script>moment.locale('en');</script>
+        {% endif %}
+        ...
+        ```
+
+        *   To check translation, modify the language settings in your browser
         so that like in this example Spanish is the preferred language.
 
-        *   Translating moment.js
         *   Lazy evaluation
-        
-
-
-
 
 7.  Create the database: `./db_create.py`
 
 8.  Start up the web server with the application in production mode:`./runp.py`
 and open <http://127.0.0.1:5000> in your browser. Enjoy!
 
-## Executables
+## Commands
 
-Run with `./foo.py` from root directory. If permission is denied,
-give it executable permission with `$ chmod a+x foo.py`. The following
-executables out of the following categories are available:
+Run with `./command.py` from root directory. If permission is denied, give it
+executable permission with `$ chmod a+x command.py`. The following are
+available:
 
-**Run**
-
-*   `run.py`: Start up the development web server with the application.
-
-*   `runp.py`: Start up the development web server with the
-application, but with debugging disabled (production mode).
-
-**Test**
-
-*   `tests.py`: Run all unittests.
-
-**Database**
-
-*   `db_create.py`: Create the database.
-
-*   `db_migrate.py`: Generate a database migration after changes to
-the database structure occured.
-
-*   `db_upgrade.py`: Upgrade the database to the latest revision.
-
-*   `db_downgrade.py`: Downgrade the database one revision. This can
-be done multiple times to downgrade several revisions.
-
-**Languages**
-
-*   `tr_init.py`: Add a language to the translation catalog.
-
-*   `tr_compile.py`: Update the catalog with new texts from source
-and templates.
-
-*   `tr_update.py`: Compile the catalog (messages.mo file)
+| Command           | Description                                             |
+| ----------------- | ------------------------------------------------------- |
+| `run.py`          | Start up the development web server with the application.                                        |
+| `runp.py`         | Like above, but with debugging disabled (production  mode). |   
+| `tests.py`        | Run all unittests.                                      |
+| `db_create.py`    | Create the database.                                    |
+| `db_migrate.py`   | Generate a database migration after changes to the database structure occured. |
+| `db_upgrade.py`   | Upgrade the database to the latest revision.            |
+| `db_downgrade.py` | Downgrade the database one revision. This can be done multiple times to downgrade several revisions. |
+| `tr_init.py`      | Add a language to the translation catalog.              |
+| `tr_compile.py`   | Update the catalog with new texts from source and templates. |
+| `tr_update.py`    | Compile the catalog (messages.mo file)                  |
 
 ## Deployment
 
