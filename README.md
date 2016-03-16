@@ -80,9 +80,8 @@ application folder: `cd microblog`
     credentials persistently, then place the mentioned commands in the
     `~/.profile`-file.
 
-    **Note**:
-    In order to function with GMail, you need to login into your account
-    and activate ["Access for less secure apps"](https://www.google.com/settings/u/1/security/lesssecureapps).
+    **Note**: In order to function with GMail, you need to login into your
+    account and activate ["Access for less secure apps"](https://www.google.com/settings/u/1/security/lesssecureapps).
 
 7.  Optional: Add additional language(s) (English and German already supported)
 
