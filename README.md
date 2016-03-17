@@ -15,11 +15,13 @@ follow [my profile](http://socialmicroblog.herokuapp.com/user/Norbert)!
 
 ## Features
 
-Next to basic features for a microblog like [OpenID](http://openid.net/)-login
-(please see *Known Issues* below), create and delete posts, pagination, profile
-pages with [(Gr)avatars](https://en.gravatar.com/), follow and unfollow users
-as well as email follower notifications, the following features are not always
-included:
+Next to basic features for a microblog like [OpenID](http://openid.net/)-login,
+create and delete posts, pagination, profile pages with [(Gr)avatars](https://en.gravatar.com/),
+follow and unfollow users as well as email follower notifications, the platform
+includes the following extra features:
+
+*   Full text search with the [Whoosh library](https://bitbucket.org/mchaput/whoosh/wiki/Home)
+(please see *Known Issues* below)
 
 *   Internationalization (i18n) and localization (l10n) through:
 
@@ -28,8 +30,6 @@ included:
 
     *   Instant translations of blog posts in other languages by using Ajax
     calls with the [Microsoft Translator service](https://datamarket.azure.com/dataset/1899a118-d202-492c-aa16-ba21c33c06cb)
-
-*   Full text search (please see *Known Issues* below)
 
 ## Requirements
 
@@ -139,28 +139,24 @@ Run with `./command.py` from root directory. If permission is denied, give it
 executable permission with `$ chmod a+x command.py`. The following are
 available:
 
-| Command           | Description                                             |
-| ----------------- | ------------------------------------------------------- |
-| `run.py`          | Start up the development web server with the application. |
-| `runp.py`         | Like above, but with debugging disabled (production mode). |
-| `tests.py`        | Run all unittests.                                      |
-| `db_create.py`    | Create the database.                                    |
-| `db_migrate.py`   | Generate a database migration after changes to the database structure occured. |
-| `db_upgrade.py`   | Upgrade the database to the latest revision.            |
-| `db_downgrade.py` | Downgrade the database one revision. This can be done multiple times to downgrade several revisions. |
-| `tr_init.py`      | Add a language to the translation catalog.              |
-| `tr_compile.py`   | Update the catalog with new texts from source and templates. |
-| `tr_update.py`    | Compile the catalog (messages.mo file)                  |
+|Command          |Description                                            |
+|-----------------|-------------------------------------------------------|
+|`run.py`         |Start up development web server with the application   |
+|`runp.py`        |Like above, but with debugging disabled (production)   |
+|`tests.py`       |Run all unittests                                      |
+|`db_create.py`   |Create the database                                    |
+|`db_migrate.py`  |Generate a migration after changes to the db structure |
+|`db_upgrade.py`  |Upgrade the database to the latest revision            |
+|`db_downgrade.py`|Downgrade db one revision (multiple times possible)    |
+|`tr_init.py`     |Add a language to the translation catalog              |
+|`tr_compile.py`  |Update catalog with new texts from source and templates|
+|`tr_update.py`   |Compile the catalog (messages.mo file)                 |
 
 ## Deployment
 
 *   tbd
 
 ## Known issues and Solutions
-
-*   "TypeError: must be str, not bytes" when updating translations in
-Python 3.4. This can easily be solved by changing a line in the babel
-package (see <https://github.com/mitsuhiko/flask-babel/issues/43>)
 
 *   The login over OpenID is limited to a Yahoo or AOL account as several
 providers (like Google) dropped their support for the OpenID-service.
@@ -173,12 +169,15 @@ fully working demo to a Linux VPS.
 
 ## Planned
 
-*   Deployment on Linux VPS
+*   Deployment on nrbrt.com with full functionality
 *   Update user authentication to OAuth 2.0
 
 ## License
 
-tbd
+Except of small adjustments and my documentation, the platform is based on the
+[Flask Mega-Tutorial by Grinberg](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-now-with-python-3-support).
+The licence of the [original source code](https://github.com/miguelgrinberg/microblog)
+applies to this repository as well: [LICENSE](LICENSE).
 
 ## References
 
