@@ -11,6 +11,8 @@ follow [my profile](http://socialmicroblog.herokuapp.com/user/Norbert)!
 
 ## Screenshots
 
+![Screencast](http://www.fotos-hochladen.net/view/anim4a75ozwxh9.gif)
+
 ![Profile](http://img5.fotos-hochladen.net/uploads/profilesmz0xn56qe43.jpg)
 
 ## Features
@@ -158,7 +160,7 @@ available:
 
 ## Known issues and Solutions
 
-*   The login over OpenID is limited to a Yahoo or AOL account as several
+*   The login with OpenID is limited to a Yahoo or AOL account as several
 providers (like Google) dropped their support for the OpenID-service.
 
 *   The full text search functionality is disabled on the demo url as
