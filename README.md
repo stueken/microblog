@@ -9,11 +9,7 @@ in Python 3.4.
 You are welcome to try it out at <http://socialmicroblog.herokuapp.com/> and
 follow [my profile](http://socialmicroblog.herokuapp.com/user/Norbert)!
 
-## Screenshots
-
-![Screencast](http://www.fotos-hochladen.net/view/anim4a75ozwxh9.gif)
-
-![Profile](http://img5.fotos-hochladen.net/uploads/profilesmz0xn56qe43.jpg)
+![Screencast](http://img5.fotos-hochladen.net/uploads/anim1rfbdgiy0q.gif)
 
 ## Features
 
@@ -32,6 +28,10 @@ includes the following extra features:
 
     *   Instant translations of blog posts in other languages by using Ajax
     calls with the [Microsoft Translator service](https://datamarket.azure.com/dataset/1899a118-d202-492c-aa16-ba21c33c06cb)
+
+## Screenshots
+
+![Profile](http://img5.fotos-hochladen.net/uploads/profilesmz0xn56qe43.jpg)
 
 ## Requirements
 
