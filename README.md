@@ -9,7 +9,9 @@ in Python 3.4.
 You are welcome to try it out at <http://socialmicroblog.herokuapp.com/> and
 follow [my profile](http://socialmicroblog.herokuapp.com/user/Norbert)!
 
-![Screencast](http://img5.fotos-hochladen.net/uploads/anim1rfbdgiy0q.gif)
+![Screencast](http://www.fotos-hochladen.net/uploads/animjakz31x40q.gif)
+
+[Screencast](http://img5.fotos-hochladen.net/uploads/anim1rfbdgiy0q.gif)
 
 ## Features
 
