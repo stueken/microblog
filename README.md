@@ -11,8 +11,6 @@ follow [my profile](http://socialmicroblog.herokuapp.com/user/Norbert)!
 
 ![Screencast](http://www.fotos-hochladen.net/uploads/animjakz31x40q.gif)
 
-[Screencast](http://img5.fotos-hochladen.net/uploads/anim1rfbdgiy0q.gif)
-
 ## Features
 
 Next to basic features for a microblog like [OpenID](http://openid.net/)-login,
@@ -30,10 +28,6 @@ includes the following extra features:
 
     *   Instant translations of blog posts in other languages by using Ajax
     calls with the [Microsoft Translator service](https://datamarket.azure.com/dataset/1899a118-d202-492c-aa16-ba21c33c06cb)
-
-## Screenshots
-
-![Profile](http://img5.fotos-hochladen.net/uploads/profilesmz0xn56qe43.jpg)
 
 ## Requirements
 
