@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -11,11 +13,14 @@ WTF_CSRF_ENABLED = True
 SECRET_KEY = 'you-will-never-guess'
 
 OPENID_PROVIDERS = [
-    {'name': 'Google', 'url': 'https://www.google.com/accounts/o8/id'},
+    # The OpenID-service is not supported anymore by several of the listed
+    # providers (Google, MyOpenID, flickr).
+    # {'name': 'Google', 'url': 'https://www.google.com/accounts/o8/id'},
     {'name': 'Yahoo', 'url': 'https://me.yahoo.com'},
-    {'name': 'AOL', 'url': 'http://openid.aol.com/<username>'},
-    {'name': 'Flickr', 'url': 'http://www.flickr.com/<username>'},
-    {'name': 'MyOpenID', 'url': 'https://www.myopenid.com'}]
+    {'name': 'AOL', 'url': 'http://openid.aol.com/<username>'}
+    # {'name': 'Flickr', 'url': 'http://www.flickr.com/<username>'},
+    # {'name': 'MyOpenID', 'url': 'https://www.myopenid.com'}
+]
 
 # mail server settings
 # MAIL_SERVER = 'localhost'
@@ -32,7 +37,7 @@ MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
 MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
 # administrator list
-ADMINS = ['minimausmusterfrau@gmail.com']
+ADMINS = ['you@example.com']
 
 # pagination
 POSTS_PER_PAGE = 3
@@ -42,8 +47,6 @@ WHOOSH_ENABLED = os.environ.get('HEROKU') is None
 WHOOSH_BASE = os.path.join(basedir, 'search.db')
 MAX_SEARCH_RESULTS = 50
 
-# -*- coding: utf-8 -*-
-# ...
 # available languages
 LANGUAGES = {
     'en': 'English',
@@ -51,8 +54,8 @@ LANGUAGES = {
 }
 
 # microsoft translation service
-MS_TRANSLATOR_CLIENT_ID = 'microblog-client-id' # enter your MS translator app id here
-MS_TRANSLATOR_CLIENT_SECRET = 'Knlbz6SVDATHGRrpIbMMZ+Kdw3VrcLV4SVAfOV9EDP4=' # enter your MS translator app secret here
+MS_TRANSLATOR_CLIENT_ID = '' # enter your MS translator app id here
+MS_TRANSLATOR_CLIENT_SECRET = '' # enter your MS translator app secret here
 
 SQLALCHEMY_RECORD_QUERIES = True
 # slow database query threshold (in seconds)
