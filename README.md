@@ -83,7 +83,8 @@ application folder: `cd microblog`
 
 7.  Optional: Add additional language(s) (English and German already supported)
 
-    1.  Add the language to the list of available languages, e.g. Spanish:
+    1.  Add the language to the list of available languages in
+        `config.py`, e.g. Spanish:
 
         ```python
         # available languages
@@ -126,9 +127,25 @@ application folder: `cd microblog`
     7.  To check translation, modify the language settings in your browser so
     that like in this example Spanish is the preferred language.
 
-8.  Create the database: `./db_create.py`
+8.  Use Microsoft Translator service for instant translations
 
-9.  Start up the web server with the application in production mode:`./runp.py`
+    1.  To use the service, sign up for the free account at the
+    [Azure Marketplace](https://datamarket.azure.com/dataset/1899a118-d202-492c-aa16-ba21c33c06cb)
+
+    2.  [Register your application](https://datamarket.azure.com/developer/applications/)
+    and get a *Client ID* and *Client Secret* code
+
+    3.  Paste both in the respective place in `config.py`:
+
+        ```python
+        # microsoft translation service
+        MS_TRANSLATOR_CLIENT_ID = '' # enter your MS translator app id here
+        MS_TRANSLATOR_CLIENT_SECRET = '' # enter your MS translator app secret here
+        ```
+
+9.  Create the database: `./db_create.py`
+
+10. Start up the web server with the application in production mode:`./runp.py`
 and open <http://127.0.0.1:5000> in your browser. Enjoy!
 
 ## Commands
